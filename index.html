@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Vitsi</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <h3>1. Fetch API GET request - Vitsi API rajapinnasta</h3>
+    <div class="show_joke"></div>
+    <button class="chuck">Hae vitsi</button>
+    <button class="toinen">Haen vitsin toinen nappula</button>
+
+    <h3>Tehtävä 2 - Kissakuvat</h3>
+
+    <figure>
+      <img src="http://placekitten.com/321/241" alt="kissakuva" />
+      <figcaption>Tähän tulee kissakuvat tiedot</figcaption>
+    </figure>
+
+    <h2>Alle tulee generoidut kissakuvat</h2>
+
+    <div id="cards"></div>
+    <button class="pics">Hae Kissakuvat</button>
+
+    <h3>3. Flexboxilla tehty kortti - Staattinen tieto</h3>
+    <section class="card-area">
+      <!-- Ensimmäinen kortti -->
+      <div class="card">
+        <div class="card-content">
+          <div class="card-img">
+            <img src="img/training.jpg" alt="Gym" />
+          </div>
+          <div class="card-text">
+            <h4>Treeniohjelmat</h4>
+            <p>
+              Oletko valmis ottamaan treenisi seuraavalle tasolle? Meillä on
+              ratkaisu sinulle! Esittelemme sinulle ainutlaatuisen
+              treeniohjelman, joka vie harjoittelusi uusiin ulottuvuuksiin. Tämä
+              ohjelma on suunniteltu niin aloittelijoille kuin kokeneemmillekin
+              kuntosalikävijöille, tarjoten haasteita ja tuloksia jokaiselle
+              tasolle.
+            </p>
+            <a href="#">Lue lisää</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toinen kortti, sama sisältö -->
+      <div class="card">
+        <div class="card-content">
+          <div class="card-img">
+            <img src="img/training.jpg" alt="Gym" />
+          </div>
+          <div class="card-text">
+            <h4>Treeniohjelmat</h4>
+            <p>
+              Oletko valmis ottamaan treenisi seuraavalle tasolle? Meillä on
+              ratkaisu sinulle! Esittelemme sinulle ainutlaatuisen
+              treeniohjelman, joka vie harjoittelusi uusiin ulottuvuuksiin. Tämä
+              ohjelma on suunniteltu niin aloittelijoille kuin kokeneemmillekin
+              kuntosalikävijöille, tarjoten haasteita ja tuloksia jokaiselle
+              tasolle.
+            </p>
+            <a href="#">Lue lisää</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <h3>4. Flexboxilla tehty kortti + Fetch + Itse luodut elementit</h3>
+    <button class="diary">Hae päiväkirjamerkinnät</button>
+    <section class="card-area"></section>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
