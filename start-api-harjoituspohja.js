@@ -93,8 +93,39 @@ function createTable(data) {
   });
 }
 
-function getUser() {
-  console.log("Haet tietoa");
+// Haetaan dialogi yksittäisille tiedoille
+// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
+const dialog = document.querySelector('.info_dialog');
+const closeButton = document.querySelector('.info_dialog button');
+// "Close" button closes the dialog
+closeButton.addEventListener('click', () => {
+  dialog.close();
+});
+
+async function getUser(evt) {
+  // haetaan data-attribuutin avulla id, tämä nopea tapa
+  const id = evt.target.attributes['data-id'].value;
+  console.log('Getting individual data for ID:', id);
+  const url = `http://127.0.0.1:3000/api/users/${id}`;
+  let token = localStorage.getItem('token');
+  const options = {
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer: ' + token,
+    },
+  };
+  fetchData(url, options).then((data) => {
+    console.log(data);
+    // Avaa modaali
+    dialog.showModal();
+    console.log('in modal');
+    dialog.querySelector('p').innerHTML = `
+          <div>User ID: <span>${data.user_id}</span></div>
+          <div>User Name: <span>${data.username}</span></div>
+          <div>Email: <span>${data.email}</span></div>
+          <div>Role: <span>${data.user_level}</span></div>
+    `;
+  });
 }
 
 async function deleteUser(evt) {
@@ -210,52 +241,14 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+document.querySelector('.logout').addEventListener('click', logOut);
 
-
-  // const updateUserButton = document.getElementById('update-user');
-  // const token = localStorage.getItem("token");
+function logOut(evt) {
+  evt.preventDefault();
+  localStorage.removeItem('token');
+  console.log('logginout');
+  window.location.href = 'index.html';
+}
  
 
-  // fetch(`http://127.0.0.1:3000/api/users/${userId}`, {
-  //   method: 'GET',
-  //   headers: {
-  //     'Authorization': `Bearer ${token}`,
-  //   },
-  // })
-  // .then(response => response.json())
-  // .then(user => {
-  //   form.username.value = user.username || '';
-  //   form.email.value = user.email || '';
-  // })
-  // .catch(error => {
-  //   console.error('Error fetching user data:', error);
-  // });
-
-  // updateUserButton.addEventListener('click', function() {
-  //   const userData = {
-  //     username: form.username.value,
-  //     password: form.password.value,
-  //     email: form.email.value,
-  //     user_id: userId
-  //   };
-  //   console.log('userdata',  userData);
-
-  //   fetch('http://localhost:3000/api/users/', {
-  //     method: 'PUT',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Authorization': `Bearer ${token}`,
-  //     },
-  //     body: JSON.stringify(userData),
-  //   })
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     console.log('User updated:', data);
-  //     alert('User updated successfully!');
-  //   })
-  //   .catch(error => {
-  //     console.error('Error updating user:', error);
-  //     alert('Failed to update user.');
-  //   });
-  // });
 
